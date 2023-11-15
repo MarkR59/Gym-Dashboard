@@ -9,7 +9,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #070707;
+  background: #efefef;
 }
 
 .input {
@@ -30,7 +30,7 @@ body {
   padding: 1rem;
   font-size: 1.5rem;
   align-items: center;
-  color: white;
+  color: black;
 }
 
 .spacer {
@@ -65,7 +65,7 @@ body {
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
@@ -77,10 +77,9 @@ body {
 }
 
 .form-container {
-  max-width: 300px;
-  margin: 0 auto;
   padding: 10px;
-  background-color: #f4f4f4;
+  background-color: #a9a9a9;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   border-radius: 5px;
 }
 
@@ -100,14 +99,15 @@ body {
 }
 
 .form-container input[type='submit'] {
-  background-color: #4caf50;
-  color: white;
+  background-color: #caebf2;
+  color: black;
   cursor: pointer;
-  border: none;
+  border: black;
+  border: 1px solid black;
 }
 
 .form-container input[type='submit']:hover {
-  background-color: #45a049;
+  background-color: #84dcf0;
 }
 
 .goals-list-container {
@@ -115,8 +115,8 @@ body {
 }
 
 .goal-card {
-  background-color: #44efb4;
-  box-shadow: 4px 4px 6px 5px rgba(0, 197, 136, 0.4);
+  background-color: #caebf2;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   border: 2px solid black;
   border-radius: 5px;
   font-weight: bold;
@@ -161,19 +161,19 @@ body {
   padding: 5px;
   border: 1px solid black;
   border-radius: 3px;
-  background-color: #ffbc46;
+  background-color: #caebf2;
   color: black;
   cursor: pointer;
   margin-left: 10px;
 }
 
 .goals-input .input:hover {
-  background-color: #fcae1e;
+  background-color: #84dcf0;
 }
 
 .input-container {
-  background-color: #44efb4;
-  box-shadow: 4px 4px 6px 5px rgba(0, 197, 136, 0.4);
+  background-color: #a9a9a9;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   padding: 10px;
   border-radius: 5px;
 }
@@ -181,15 +181,11 @@ body {
 .track-weight {
   margin: 0 auto;
   padding: 10px;
-  background-color: #44efb4;
-  box-shadow: 4px 4px 6px 5px rgba(0, 197, 136, 0.4);
+  background-color: #a9a9a9;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   border-radius: 5px;
   display: inline block;
   align-self: start;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
 }
 
 .weight-form {
@@ -213,18 +209,18 @@ body {
   padding: 5px;
   border: 1px solid black;
   border-radius: 3px;
-  background-color: #ffbc46;
+  background-color: #caebf2;
   color: black;
   cursor: pointer;
 }
 
 .weight-form .input[type='submit']:hover {
-  background-color: #fcae1e;
+  background-color: #84dcf0;
 }
 
 .cal {
-  background-color: #44efb4;
-  box-shadow: 4px 4px 6px 5px rgba(0, 197, 136, 0.4);
+  background-color: #a9a9a9;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   padding: 10px;
   border-radius: 5px;
   align-self: center;
@@ -301,8 +297,8 @@ body {
 .card::before,
 .card::after,
 .card .card-body {
-  background-color: #44efb4;
-  box-shadow: 4px 4px 6px 5px rgba(0, 197, 136, 0.4);
+  background-color: #caebf2;
+  box-shadow: 4px 4px 6px 5px #caebf2;
   border: 1px solid black;
   border-radius: 5px;
   transition: transform 0.3s;
@@ -332,7 +328,7 @@ body {
 }
 
 .body-part-card {
-  background-color: #44efb4;
+  background-color: #a9a9a9;
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
@@ -363,7 +359,7 @@ body {
   margin-top: 10px;
 }
 
-.exercises .node-label{
+.exercises .node-label {
   margin-bottom: 20px;
 }
 
@@ -430,7 +426,7 @@ body {
 
 .pagination {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   margin-top: 10px;
 }
 
