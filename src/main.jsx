@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './pages/App.jsx';
 import Nutrition from './pages/Nutrition.jsx';
 import Lifting from './pages/Lifting.jsx';
+import Login from './components/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/Lifting',
     element: <Lifting />,
+  },
+  {
+    path: '/Login',
+    element: <Login />,
   },
 ]);
 
