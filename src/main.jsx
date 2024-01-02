@@ -5,6 +5,7 @@ import App from './pages/App.jsx';
 import Nutrition from './pages/Nutrition.jsx';
 import Lifting from './pages/Lifting.jsx';
 import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/Login',
     element: <Login />,
+  },
+  {
+    path: '/Register',
+    element: <Register />,
   },
 ]);
 

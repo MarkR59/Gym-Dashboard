@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -61,7 +62,7 @@ function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? Sign up</p>
+        <p>Don't have an account? <Link to="/Register">Sign Up</Link></p>
       </div>
     </div>
   );

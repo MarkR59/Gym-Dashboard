@@ -1,22 +1,32 @@
-/* eslint-disable no-undef */
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import cors from 'cors';
+import User from './models/User.js'; // Assuming you have this model
 
 const app = express();
-
-// Middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-// Database connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to DB'))
-  .catch((error) => console.error(error));
+// MongoDB connection string
+const mongoURI = 'mongodb+srv://mark59:root@gymdash.glklv09.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(mongoURI);
 
-// Routes
-app.use('/api/users', require('./routes/userRoutes'));
+// Register User
+app.post('/Register', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 8);
+    const user = new User({ username, password: hashedPassword });
+    await user.save();
+    res.status(201).send({ message: 'User created successfully' });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
