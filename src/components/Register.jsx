@@ -1,31 +1,35 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
 
     try {
-        const response = await fetch('http://localhost:3001/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-        if (response.ok) {
-          console.log('User registered successfully');
-          // Redirect or further actions
-        } else {
-          console.error('Registration failed');
-          // Handle errors
-        }
-      } catch (error) {
-        console.error('There was an error registering the user', error);
+      const response = await fetch("http://localhost:3001/Register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.ok) {
+        console.log("User registered successfully");
+        navigate("/Login");
+      } else {
+        console.error("Registration failed");
+        setErrorMessage("Account already exists");
       }
+    } catch (error) {
+      console.error("There was an error registering the user", error);
+    }
   };
 
   return (
@@ -52,6 +56,7 @@ function Register() {
             />
           </div>
           <button type="submit">Register</button>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>
     </div>

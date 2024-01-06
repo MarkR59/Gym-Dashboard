@@ -1,40 +1,39 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
 
     try {
-        const response = await fetch('http://localhost:5000/api/login', { // Replace with your backend URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+      const response = await fetch("http://localhost:3001/Login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
+      if (response.ok) {
         const data = await response.json();
-
-        if (response.ok) {
-            console.log('Login successful:', data);
-            // Handle successful login here (e.g., redirect, store token)
-        } else {
-            console.log('Login failed:', data.message);
-            // Handle errors (e.g., show error message)
-        }
+        console.log("Login successful:", data);
+        // Redirect to another page or handle login success
+        navigate("/"); // Redirect to dashboard after successful login
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "Login failed");
+      }
     } catch (error) {
-        console.error('Login error:', error);
-        // Handle network errors
+      console.error("Login error:", error);
+      setErrorMessage("An error occurred during login");
     }
-
-    // Reset fields after submission
-    setUsername('');
-    setPassword('');
   };
 
   return (
@@ -61,8 +60,11 @@ function Login() {
             />
           </div>
           <button type="submit">Login</button>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
-        <p>Don't have an account? <Link to="/Register">Sign Up</Link></p>
+        <p>
+          Don't have an account? <Link to="/Register">Sign Up</Link>
+        </p>
       </div>
     </div>
   );
