@@ -1,10 +1,8 @@
-const Header = () => {
+const Header = ({ name }) => {
   return (
     <div>
       <header className="header">
-        <h1>Welcome back!</h1>
-        <div className="spacer"></div>
-        <p>Name</p>
+        <h1>Welcome back{ name ? `, ${name}` : '' }!</h1>
       </header>
     </div>
   );

@@ -482,6 +482,18 @@ body {
   background-color: #84dcf0;
 }
 
+.error-message{
+  color: rgb(109, 22, 22);
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.registerLink {
+  text-align: center;
+  font-weight: bold;
+}
+
 .node {
   margin: 20px;
 }
