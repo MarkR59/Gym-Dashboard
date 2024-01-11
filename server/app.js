@@ -20,12 +20,16 @@ const authenticateUser = async (username, password) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return false;
+      return null;
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
-    return isMatch;
+    if (isMatch) {
+      return user;
+    } else {
+      return null;
+    }
   } catch (error) {
     console.error("Error in authenticateUser:", error);
     throw error;
@@ -47,11 +51,11 @@ app.post("/Register", async (req, res) => {
 
 app.post("/Login", async (req, res) => {
   const { username, password } = req.body;
-  const isAuthenticated = await authenticateUser(username, password);
+  const user = await authenticateUser(username, password);
 
-  if (isAuthenticated) {
-    const token = jwt.sign({ username: user.username }, process.env.SECRET_KEY); 
-    res.status(200).json({ token }); 
+  if (user) {
+    const token = jwt.sign({ username: user.username }, process.env.SECRET_KEY);
+    res.status(200).json({ token });
   } else {
     res.status(401).json({ message: "Invalid username or password" });
   }

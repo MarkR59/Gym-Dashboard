@@ -5,12 +5,20 @@ import Sidebar from "../components/Sidebar";
 import Tips from "../components/Tips";
 import Header from "../components/header";
 import { Box } from "@mui/material";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";  
 
 function App() {
   const token = localStorage.getItem("token");
-  console.log(token);
-  const username = "bob";
+  let username = null;
+
+  if (token) {
+    try {
+      const decodedToken = jwtDecode(token);
+      username = decodedToken.username;
+    } catch (error) {
+      console.error("Error decoding token:", error);
+    }
+  }
 
   return (
     <Box>
