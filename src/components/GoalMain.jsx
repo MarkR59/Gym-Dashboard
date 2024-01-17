@@ -1,6 +1,6 @@
-import GoalsInput from './GoalsInput';
-import GoalCards from './GoalCards';
-import { useState } from 'react';
+import GoalsInput from "./GoalsInput";
+import GoalCards from "./GoalCards";
+import { useState } from "react";
 
 function GoalMain() {
   const [goals, setGoals] = useState([]);
@@ -14,18 +14,16 @@ function GoalMain() {
   };
 
   return (
-    <>
-      <div className="goal-main">
-        <div>
-          <GoalsInput onAddGoal={handleAddGoal} />
-        </div>
-        <div className="goals-list-container">
-          {goals.map((goal, index) => (
-            <GoalCards key={index} goal={goal} />
-          ))}
-        </div>
+    <div className="goal-main">
+      <div>
+        <GoalsInput onAddGoal={handleAddGoal} />
       </div>
-    </>
+      <div className="goals-list-container">
+        {goals.map((goal, index) => (
+          <GoalCards key={index} goal={goal} />
+        ))}
+      </div>
+    </div>
   );
 }
 
