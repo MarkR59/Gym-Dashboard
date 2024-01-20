@@ -4,8 +4,9 @@ import GoalMain from "../components/GoalMain";
 import Sidebar from "../components/Sidebar";
 import Tips from "../components/Tips";
 import Header from "../components/header";
+import Split from "../components/Split";
 import { Box } from "@mui/material";
-import { jwtDecode } from "jwt-decode";  
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -26,15 +27,13 @@ function App() {
         <Sidebar />
         <Header name={username} />
         <div className="content">
-          <div className="node">
-            <Calendar />
-          </div>
-          <div className="node">
-            <Tips />
-          </div>
-          <div className="node">
-            <GoalMain />
-          </div>
+          <Calendar />
+
+          <Tips />
+
+          <GoalMain />
+
+          <Split />
         </div>
       </div>
     </Box>

@@ -6,7 +6,7 @@ function GoalMain() {
   const [goals, setGoals] = useState([]);
 
   const handleAddGoal = (goal) => {
-    if (goals.length > 3) {
+    if (goals.length > 4) {
       return;
     } else {
       setGoals([...goals, goal]);
